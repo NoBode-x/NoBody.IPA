@@ -1,0 +1,76 @@
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+background-color: #f4f4f4;
+}
+
+.container {
+max-width: 800px;
+margin: auto;
+padding: 20px;
+}
+
+.app {
+background: white;
+padding: 15px;
+margin: 10px 0;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.app img {
+width: 80px;
+height: 80px;
+border-radius: 10px;
+}
+
+.app-info {
+text-align: center;
+}
+
+.download-btn {
+background: #28a745;
+color: white;
+border: none;
+padding: 10px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.download-btn:hover {
+background: #218838;
+}
+
+.comments-container {
+margin-top: 10px;
+text-align: left;
+}
+
+.comment-input {
+width: 90%;
+padding: 8px;
+margin-top: 5px;
+}
+
+.comment-btn {
+margin-top: 5px;
+padding: 5px;
+cursor: pointer;
+}
+
+.rating-container {
+margin-top: 10px;
+}
+
+.star {
+font-size: 20px;
+cursor: pointer;
+color: gray;
+}
+
+.star.selected {
+color: gold;
+}

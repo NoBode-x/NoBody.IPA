@@ -1,0 +1,36 @@
+.login-container {
+max-width: 300px;
+margin: auto;
+padding: 20px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+.login-container input {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+button {
+background: #28a745;
+color: white;
+border: none;
+padding: 10px;
+border-radius: 5px;
+cursor: pointer;
+width: 100%;
+}
+
+button:hover {
+background: #218838;
+}
+
+.error-message {
+color: red;
+margin-top: 10px;
+}
