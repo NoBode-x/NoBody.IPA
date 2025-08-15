@@ -1,0 +1,18 @@
+{
+  "username": "sample_creator",
+  "pillars": [
+    "fitness",
+    "nutrition",
+    "wellness"
+  ],
+  "config": {
+    "posts_per_week": 4,
+    "reels_per_week": 2,
+    "stories_per_week": 5,
+    "num_days": 14
+  },
+  "notes": [
+    "This tool is for planning only and does not automate actions.",
+    "Always follow Instagram's Terms of Use and Community Guidelines."
+  ]
+}
