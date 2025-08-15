@@ -28,10 +28,21 @@ import json
 import random
 import re
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
 
 
 VALID_USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9._]{1,30}$")
+
+# Default content pillars used as fallback and for filling to minimum count
+DEFAULT_PILLARS: List[str] = [
+    "behind the scenes",
+    "tips and tutorials",
+    "community highlights",
+    "personal stories",
+    "product or service features",
+    "industry insights",
+    "user-generated content",
+]
 
 
 def validate_username(username: str) -> None:
@@ -88,15 +99,7 @@ def generate_content_pillars(username: str, provided_topics: Sequence[str]) -> L
         tokens = [t for t in tokens if t and not t.isdigit()]
         tokens = [t.lower() for t in tokens]
         # Fallback themes
-        fallback = [
-            "behind the scenes",
-            "tips and tutorials",
-            "community highlights",
-            "personal stories",
-            "product or service features",
-            "industry insights",
-            "user-generated content",
-        ]
+        fallback = DEFAULT_PILLARS
         base_topics = tokens if tokens else fallback
 
     # Normalize and pick 3-5 pillars
@@ -105,12 +108,18 @@ def generate_content_pillars(username: str, provided_topics: Sequence[str]) -> L
         topic_clean = re.sub(r"\s+", " ", topic.strip().lower())
         if topic_clean and topic_clean not in cleaned:
             cleaned.append(topic_clean)
-    if not cleaned:
-        cleaned = ["tips and tutorials", "personal stories", "industry insights"]
+
+    # Ensure at least 3 pillars by filling from defaults
+    if len(cleaned) < 3:
+        for candidate in DEFAULT_PILLARS:
+            if candidate not in cleaned:
+                cleaned.append(candidate)
+            if len(cleaned) >= 3:
+                break
 
     rng.shuffle(cleaned)
-    num_pillars = min(max(3, len(cleaned)), 5)
-    return cleaned[:num_pillars]
+    # Cap to 5 max
+    return cleaned[:5]
 
 
 def get_recommended_posting_hours() -> Dict[int, List[int]]:
